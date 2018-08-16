@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\BalanceService;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * @var BalanceService $balanceService
      */
-    public function __construct()
-    {
+    protected $balanceService;
+
+    /**
+     * HomeController constructor.
+     * @param BalanceService $balanceService
+     */
+    public function __construct(BalanceService $balanceService) {
         $this->middleware('auth');
+        $this->balanceService = $balanceService;
     }
 
     /**
@@ -23,6 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $balance = $this->balanceService->getTheCurrentBalance();
+        return view('home', compact('balance'));
     }
 }
