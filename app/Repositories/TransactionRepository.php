@@ -13,6 +13,9 @@ class TransactionRepository extends Repository
 
     public function getTheLastRecords(int $quantity)
     {
-        return $this->model()::with(['user', 'income', 'expense'])->get();
+        return $this->model()::with(['user', 'income', 'expense'])
+            ->orderBy('id', 'desc')
+            ->limit($quantity)
+            ->get();
     }
 }
