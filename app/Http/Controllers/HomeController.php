@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AccountService;
 use Illuminate\Http\Request;
 use App\Services\BalanceService;
 use App\Services\TransactionService;
@@ -19,16 +20,25 @@ class HomeController extends Controller
     protected $transactionService;
 
     /**
+     * @var AccountService $accountService
+     */
+    protected $accountService;
+
+    /**
      * HomeController constructor.
      * @param BalanceService $balanceService
+     * @param TransactionService $transactionService
+     * @param AccountService $accountService
      */
     public function __construct(
         BalanceService $balanceService,
-        TransactionService $transactionService
+        TransactionService $transactionService,
+        AccountService $accountService
     ) {
         $this->middleware('auth');
         $this->balanceService = $balanceService;
         $this->transactionService = $transactionService;
+        $this->accountService = $accountService;
     }
 
     /**
@@ -40,7 +50,15 @@ class HomeController extends Controller
     {
         $balance = $this->balanceService->getTheCurrentBalance();
         $lastTransactions = $this->transactionService->getTheLastTransactions(5);
+        $accounts = $this->accountService->accountRepository->findAll();
 
-        return view('home', compact(['balance', 'lastTransactions']));
+        return view(
+            'home',
+            compact([
+                'balance',
+                'lastTransactions',
+                'accounts'
+            ])
+        );
     }
 }
