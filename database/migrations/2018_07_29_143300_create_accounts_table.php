@@ -19,6 +19,7 @@ class CreateAccountsTable extends Migration
             $table->decimal('percentage', 8, 2);
             $table->string('name');
             $table->text('description')->nullable();
+            $table->json('debt_from')->nullable();
             $table->timestamps();
         });
         Artisan::call('db:seed', ['--class' => 'AccountSeeder']);

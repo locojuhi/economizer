@@ -21,26 +21,55 @@ class ExpenseTypeSeeder extends Seeder
                     'name' => 'rent',
                     'description' => ''
                 ],
-                'services' => [
-                    'name' => 'services',
+                'electricity' => [
+                    'name' => 'electricity',
                     'description' => ''
                 ],
-                'medicine' => [
-                    'name' => 'medicine',
+                'gas' => [
+                    'name' => 'gas',
                     'description' => ''
                 ],
-                'hygiene' => [
-                    'name' => 'hygiene',
+                'water' => [
+                    'name' => 'water',
+                    'description' => ''
+                ],
+                'internet' => [
+                    'name' => 'internet',
                     'description' => ''
                 ],
                 'learning' => [
                     'name' => 'learning',
                     'description' => ''
                 ],
+                'hygiene' => [
+                    'name' => 'hygiene',
+                    'description' => ''
+                ],
                 'transport' => [
                     'name' => 'transport',
                     'description' => ''
-                ]
+                ],
+                'clothing' => [
+                    'name' => 'clothing',
+                    'description' => ''
+                ],
+                'health' => [
+                    'name' => 'health',
+                    'description' => ''
+                ],
+                'inviteTransport' => [
+                    'name' => 'invite transport',
+                    'description' => ''
+                ],
+                'inviteFood' => [
+                    'name' => 'invite food',
+                    'description' => ''
+                ],
+                'gift' => [
+                    'name' => 'gift',
+                    'description' => ''
+                ],
+
             ]
         ];
         foreach ($expenseTypesToRegister as $expenseTypes => $expenseType) {

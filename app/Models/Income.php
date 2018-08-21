@@ -21,4 +21,12 @@ class Income extends Model
         'amount',
         'income_type_id'
     ];
+
+    /**
+     * Get all of the posts for the user.
+     */
+    public function transactions()
+    {
+        return $this->hasOne(Transaction::class);
+    }
 }
