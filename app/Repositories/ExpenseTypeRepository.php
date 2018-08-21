@@ -10,4 +10,13 @@ class ExpenseTypeRepository extends Repository
     {
         return ExpenseType::class;
     }
+
+    /**
+     * @param array $names
+     * @return mixed
+     */
+    public function findByName(array $names)
+    {
+        return $this->model::whereIn('name', $names);
+    }
 }
